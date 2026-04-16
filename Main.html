@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Narval Anti-Cheat | Sécurité Roblox</title>
+    <style>
+        /* Thème inspiré de SPDM Team / Modern SaaS */
+        :root {
+            --bg-base: #050505;
+            --text-main: #ffffff;
+            --text-muted: #a1a1aa;
+            --accent-1: #2563eb;
+            --accent-2: #4f46e5;
+            --card-bg: rgba(24, 24, 27, 0.4);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --card-hover: rgba(255, 255, 255, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-base);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Effet de lueur en arrière-plan (Glow) */
+        .bg-glow {
+            position: fixed;
+            top: -20%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80vw;
+            height: 80vh;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.15) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Navigation Glassmorphism */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 5%;
+            background: rgba(5, 5, 5, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+        }
+
+        .logo span {
+            background: linear-gradient(135deg, #60a5fa, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-main);
+        }
+
+        .btn {
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            color: #ffffff;
+            padding: 0.7rem 1.5rem;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--card-border);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: none;
+        }
+
+        /* Hero Section */
+        header {
+            padding: 12rem 5% 6rem;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            background: rgba(37, 99, 235, 0.1);
+            color: #60a5fa;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            display: inline-block;
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1.5px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            margin: 0 auto 3rem;
+            max-width: 650px;
+        }
+
+        /* Section Global */
+        section {
+            padding: 6rem 5%;
+            position: relative;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+        }
+
+        /* Cards / Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .glass-card {
+            background: var(--card-bg);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--card-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .glass-card:hover {
+            border-color: var(--card-hover);
+            transform: translateY(-5px);
+        }
+
+        .icon-wrapper {
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: #60a5fa;
+        }
+
+        .icon-wrapper svg {
+            width: 24px;
+            height: 24px;
+        }
+
+        .glass-card h3 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .glass-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-list li svg {
+            width: 16px;
+            height: 16px;
+            color: #60a5fa;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        /* Terminal System */
+        .terminal {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #09090b;
+            border-radius: 12px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            overflow: hidden;
+        }
+
+        .terminal-top {
+            background: #18181b;
+            padding: 12px 20px;
+            border-bottom: 1px solid var(--card-border);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+        .dot.r { background: #ef4444; }
+        .dot.y { background: #eab308; }
+        .dot.g { background: #22c55e; }
+
+        .terminal-body {
+            padding: 20px;
+            font-family: "JetBrains Mono", Consolas, monospace;
+            font-size: 0.85rem;
+            color: #a1a1aa;
+            line-height: 1.8;
+            overflow-x: auto;
+        }
+
+        .t-time { color: #52525b; }
+        .t-info { color: #3b82f6; }
+        .t-warn { color: #eab308; }
+        .t-crit { color: #ef4444; }
+        .t-white { color: #fff; }
+
+        /* Pricing Section */
+        .pricing-card {
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .pricing-card.popular {
+            background: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, var(--card-bg) 100%);
+            border-color: rgba(37, 99, 235, 0.4);
+        }
+
+        .popular-badge {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .price-header {
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--card-border);
+            padding-bottom: 2rem;
+        }
+
+        .price-amount {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 1;
+            margin: 1rem 0;
+        }
+
+        .price-amount span {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .btn-pricing {
+            margin-top: auto;
+            width: 100%;
+            text-align: center;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--card-border);
+            padding: 3rem 5%;
+            text-align: center;
+            color: #52525b;
+            font-size: 0.85rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-glow"></div>
+
+    <nav>
+        <a href="#" class="logo">NARVAL <span>AC</span></a>
+        <div class="nav-links">
+            <a href="#features">Architecture</a>
+            <a href="#logs">Système</a>
+            <a href="#pricing">Licences</a>
+        </div>
+        <a href="#pricing" class="btn">Accéder au panel</a>
+    </nav>
+
+    <header>
+        <div class="badge">Nouvelle Architecture Déployée</div>
+        <h1>La sécurité absolue,<br>sans compromis.</h1>
+        <p class="hero-subtitle">Protégez votre infrastructure Roblox avec un système algorithmique de pointe. Panel web centralisé, webhooks enrichis et zéro faux positif.</p>
+        <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <a href="#pricing" class="btn">Acquérir une licence</a>
+            <a href="#features" class="btn btn-outline">Spécifications techniques</a>
+        </div>
+    </header>
+
+    <section id="features">
+        <div class="section-header">
+            <h2 class="section-title">Ingénierie avancée</h2>
+            <p class="section-subtitle">Les modules intégrés à l'environnement Narval</p>
+        </div>
+
+        <div class="grid-3">
+            <div class="glass-card">
+                <div class="icon-wrapper">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                </div>
+                <h3>Système de Gravité (1-5)</h3>
+                <p>Classification algorithmique précise pour chaque infraction détectée sur le serveur.</p>
+                <ul class="feature-list">
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Niv 1-2 : Infractions physiques (Fly)</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Niv 3-4 : Altération client (CoreGui)</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Niv 5 : Honeypots et Exécuteurs</li>
+                </ul>
+            </div>
+
+            <div class="glass-card">
+                <div class="icon-wrapper">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                </div>
+                <h3>Panel Web Intégré</h3>
+                <p>Gérez vos incidents et vos listes de contrôle depuis une interface unifiée.</p>
+                <ul class="feature-list">
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Codes d'identification (NRV-XXXX)</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Moteur de recherche d'incidents</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Blacklist dynamique persistante</li>
+                </ul>
+            </div>
+
+            <div class="glass-card">
+                <div class="icon-wrapper">
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3>Interopérabilité Discord</h3>
+                <p>Transfert de données automatisé vers votre infrastructure de modération.</p>
+                <ul class="feature-list">
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Webhooks formatés et sécurisés</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Exportation de fiches en un clic</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Synchronisation DataStore temps réel</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="logs">
+        <div class="section-header">
+            <h2 class="section-title">Supervision active</h2>
+            <p class="section-subtitle">Flux d'exécution du moteur Narval sur environnement de production</p>
+        </div>
+
+        <div class="terminal">
+            <div class="terminal-top">
+                <div class="dot r"></div>
+                <div class="dot y"></div>
+                <div class="dot g"></div>
+                <span style="margin-left: 10px; font-size: 0.8rem; color: #71717a; font-family: monospace;">bash - narval_engine --watch</span>
+            </div>
+            <div class="terminal-body">
+                <span class="t-time">00:00:01</span> <span class="t-info">[SYS]</span> Initialisation du module de Gravité... <span class="t-white">OK</span><br>
+                <span class="t-time">00:00:02</span> <span class="t-info">[DATA]</span> Fusion Blacklist Statique & Dynamique... <span class="t-white">COMPLET</span><br>
+                <span class="t-time">00:04:12</span> <span class="t-warn">[DETECT]</span> Altération vecteur vitesse (Speed/Fly) identifiée.<br>
+                <span class="t-time">00:04:12</span> <span class="t-info">[ACTION]</span> Expulsion de la session. <span class="t-white">Gravité: 2</span>.<br>
+                <span class="t-time">00:15:33</span> <span class="t-crit">[CRIT]</span> Accès mémoire non autorisé (Injection Globals/HRP).<br>
+                <span class="t-time">00:15:33</span> <span class="t-info">[ACTION]</span> Bannissement réseau appliqué. Code: <span class="t-white">NRV-8A2B-F19C</span>. Gravité: 4.<br>
+                <span class="t-time">00:15:34</span> <span class="t-info">[API]</span> Transmission du rapport webhook Discord... <span class="t-white">200 OK</span><br>
+                <span class="t-time">00:15:35</span> <span class="t-info">[SYS]</span> En écoute d'événements CoreGui...
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing">
+        <div class="section-header">
+            <h2 class="section-title">Tarification Unique</h2>
+            <p class="section-subtitle" style="color: #60a5fa; font-weight: 600;">Peu importe votre choix, c'est 5 euros.</p>
+        </div>
+
+        <div class="grid-3">
+            
+            <!-- Option 1 : Mensuel -->
+            <div class="glass-card pricing-card">
+                <div class="price-header">
+                    <h3>Mensuel</h3>
+                    <div class="price-amount">5€<span>/mois</span></div>
+                </div>
+                <ul class="feature-list" style="margin-bottom: 2rem;">
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès à tous les outils</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Support Discord</li>
+                </ul>
+                <a href="#" class="btn btn-outline btn-pricing">Sélectionner</a>
+            </div>
+
+            <!-- Option 2 : Annuel -->
+            <div class="glass-card pricing-card">
+                <div class="price-header">
+                    <h3>Annuel</h3>
+                    <div class="price-amount">5€<span>/an</span></div>
+                </div>
+                <ul class="feature-list" style="margin-bottom: 2rem;">
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès à tous les outils</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Support Discord</li>
+                </ul>
+                <a href="#" class="btn btn-outline btn-pricing">Sélectionner</a>
+            </div>
+
+            <!-- Option 3 : Décennie -->
+            <div class="glass-card pricing-card popular">
+                <div class="popular-badge">Choix Logique</div>
+                <div class="price-header">
+                    <h3>Décennie</h3>
+                    <div class="price-amount">5€<span>/10 ans</span></div>
+                </div>
+                <ul class="feature-list" style="margin-bottom: 2rem;">
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès à tous les outils</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Support Discord</li>
+                </ul>
+                <a href="#" class="btn btn-pricing">Prendre la décennie</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>Narval Anti-Cheat &copy; 2024. Tous droits réservés.</p>
+        <p style="margin-top: 5px;">Logiciel de sécurité indépendant. Non affilié à Roblox Corporation.</p>
+    </footer>
+
+</body>
+</html>
