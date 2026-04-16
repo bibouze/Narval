@@ -116,6 +116,7 @@
             background: transparent;
             border: 1px solid var(--card-border);
             color: var(--text-main);
+            transition: background 0.3s ease;
         }
 
         .btn-outline:hover {
@@ -308,27 +309,6 @@
             position: relative;
         }
 
-        .pricing-card.popular {
-            background: linear-gradient(180deg, rgba(37, 99, 235, 0.1) 0%, var(--card-bg) 100%);
-            border-color: rgba(37, 99, 235, 0.4);
-        }
-
-        .popular-badge {
-            position: absolute;
-            top: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
-            color: white;
-            padding: 4px 12px;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            white-space: nowrap;
-        }
-
         .price-header {
             margin-bottom: 2rem;
             border-bottom: 1px solid var(--card-border);
@@ -386,7 +366,7 @@
 
     <header>
         <div class="badge">Nouvelle Architecture Déployée</div>
-        <h1>La sécurité absolue,<br>sans compromis.</h1>
+        <h1>La sécurité absolue,<br>sans engagement.</h1>
         <p class="hero-subtitle">Protégez votre infrastructure Roblox avec un système algorithmique de pointe. Panel web centralisé, webhooks enrichis et zéro faux positif.</p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
             <a href="#pricing" class="btn">Acquérir une licence</a>
@@ -471,7 +451,7 @@
     <section id="pricing">
         <div class="section-header">
             <h2 class="section-title">Tarification Unique</h2>
-            <p class="section-subtitle" style="color: #60a5fa; font-weight: 600;">Peu importe votre choix, c'est 5 euros.</p>
+            <p class="section-subtitle" style="color: #60a5fa; font-weight: 600;">Peu importe votre choix, c'est 5 euros. Sans engagement.</p>
         </div>
 
         <div class="grid-3">
@@ -503,8 +483,7 @@
             </div>
 
             <!-- Option 3 : Décennie -->
-            <div class="glass-card pricing-card popular">
-                <div class="popular-badge">Choix Logique</div>
+            <div class="glass-card pricing-card">
                 <div class="price-header">
                     <h3>Décennie</h3>
                     <div class="price-amount">5€<span>/10 ans</span></div>
@@ -513,7 +492,7 @@
                     <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès à tous les outils</li>
                     <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Support Discord</li>
                 </ul>
-                <a href="#" class="btn btn-pricing">Prendre la décennie</a>
+                <a href="#" class="btn btn-outline btn-pricing">Sélectionner</a>
             </div>
 
         </div>
@@ -525,4 +504,4 @@
     </footer>
 
 </body>
-</html>
+                                                                                                                                                </html>
