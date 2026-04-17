@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Narval Anti-Cheat | Sécurité Roblox</title>
+    <title>Narval Suite | L'écosystème ultime</title>
     <style>
         /* Thème inspiré de SPDM Team / Modern SaaS */
         :root {
@@ -184,7 +184,15 @@
             font-size: 1.05rem;
         }
 
-        /* Cards / Grid */
+        /* Grids */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -201,11 +209,27 @@
             border-radius: 16px;
             padding: 2.5rem;
             transition: border-color 0.3s ease, transform 0.3s ease;
+            position: relative;
         }
 
         .glass-card:hover {
             border-color: var(--card-hover);
             transform: translateY(-5px);
+        }
+
+        .coming-soon-tag {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+            padding: 4px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
 
         .icon-wrapper {
@@ -227,7 +251,7 @@
         }
 
         .glass-card h3 {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             font-weight: 600;
             margin-bottom: 1rem;
         }
@@ -236,6 +260,7 @@
             color: var(--text-muted);
             font-size: 0.95rem;
             margin-bottom: 1.5rem;
+            line-height: 1.7;
         }
 
         .feature-list {
@@ -298,8 +323,6 @@
 
         .t-time { color: #52525b; }
         .t-info { color: #3b82f6; }
-        .t-warn { color: #eab308; }
-        .t-crit { color: #ef4444; }
         .t-white { color: #fff; }
 
         /* Pricing Section */
@@ -347,6 +370,7 @@
         @media (max-width: 768px) {
             h1 { font-size: 2.8rem; }
             .nav-links { display: none; }
+            .grid-2 { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -355,68 +379,58 @@
     <div class="bg-glow"></div>
 
     <nav>
-        <a href="#" class="logo">NARVAL <span>AC</span></a>
+        <a href="#" class="logo">NARVAL <span>SUITE</span></a>
         <div class="nav-links">
-            <a href="#features">Architecture</a>
-            <a href="#logs">Système</a>
+            <a href="#outils">Nos Outils</a>
+            <a href="#logs">Monitoring</a>
             <a href="#pricing">Licences</a>
         </div>
-        <a href="#pricing" class="btn">Accéder au panel</a>
+        <a href="#pricing" class="btn">Rejoindre</a>
     </nav>
 
     <header>
-        <div class="badge">Nouvelle Architecture Déployée</div>
-        <h1>La sécurité absolue,<br>sans engagement.</h1>
-        <p class="hero-subtitle">Protégez votre infrastructure Roblox avec un système algorithmique de pointe. Panel web centralisé, webhooks enrichis et zéro faux positif.</p>
+        <div class="badge">Un seul abonnement pour tout</div>
+        <h1>L'écosystème ultime<br>pour votre communauté.</h1>
+        <p class="hero-subtitle">Accédez à notre solution Anti-Cheat Roblox de pointe et à notre futur Bot de Musique Discord. Un accès global, sans engagement, pour gérer votre infrastructure sereinement.</p>
         <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-            <a href="#pricing" class="btn">Acquérir une licence</a>
-            <a href="#features" class="btn btn-outline">Spécifications techniques</a>
+            <a href="#pricing" class="btn">Voir les licences</a>
+            <a href="#outils" class="btn btn-outline">Découvrir les outils</a>
         </div>
     </header>
 
-    <section id="features">
+    <section id="outils">
         <div class="section-header">
-            <h2 class="section-title">Ingénierie avancée</h2>
-            <p class="section-subtitle">Les modules intégrés à l'environnement Narval</p>
+            <h2 class="section-title">La suite logicielle</h2>
+            <p class="section-subtitle">Tout ce dont vous avez besoin, réuni dans un seul accès.</p>
         </div>
 
-        <div class="grid-3">
+        <div class="grid-2">
+            <!-- Narval Anti-Cheat -->
             <div class="glass-card">
                 <div class="icon-wrapper">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 6l3 1m0 0l-3 9a5.002 5.002 0 006.001 0M6 7l3 9M6 7l6-2m6 2l3-1m-3 1l-3 9a5.002 5.002 0 006.001 0M18 7l3 9m-3-9l-6-2m0-2v2m0 16V5m0 16H9m3 0h3"></path></svg>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                 </div>
-                <h3>Système de Gravité (1-5)</h3>
-                <p>Classification algorithmique précise pour chaque infraction détectée sur le serveur.</p>
+                <h3>Narval Anti-Cheat</h3>
+                <p>Notre solution de sécurité algorithmique pour Roblox. Fini les exploitations serveurs. Profitez d'un panel web de gestion complet, d'un système de gravité des sanctions (Niveaux 1 à 5) et de webhooks Discord ultra-détaillés garantissant zéro faux positif.</p>
                 <ul class="feature-list">
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Niv 1-2 : Infractions physiques (Fly)</li>
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Niv 3-4 : Altération client (CoreGui)</li>
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Niv 5 : Honeypots et Exécuteurs</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Détection avancée (Fly, CoreGui, Exécuteurs)</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Moteur de recherche d'incidents web</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Blacklist dynamique multi-serveurs</li>
                 </ul>
             </div>
 
+            <!-- Narval Music -->
             <div class="glass-card">
+                <div class="coming-soon-tag">Coming Soon</div>
                 <div class="icon-wrapper">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zM9 10l12-3"></path></svg>
                 </div>
-                <h3>Panel Web Intégré</h3>
-                <p>Gérez vos incidents et vos listes de contrôle depuis une interface unifiée.</p>
+                <h3>Narval Music (Bot Discord)</h3>
+                <p>Le bot musical définitif, directement inclus dans votre accès. Diffusez de l'audio haute définition dans vos salons vocaux avec un système de file d'attente fluide, une gestion poussée des playlists et des commandes d'administration intuitives.</p>
                 <ul class="feature-list">
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Codes d'identification (NRV-XXXX)</li>
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Moteur de recherche d'incidents</li>
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Blacklist dynamique persistante</li>
-                </ul>
-            </div>
-
-            <div class="glass-card">
-                <div class="icon-wrapper">
-                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
-                </div>
-                <h3>Interopérabilité Discord</h3>
-                <p>Transfert de données automatisé vers votre infrastructure de modération.</p>
-                <ul class="feature-list">
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Webhooks formatés et sécurisés</li>
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Exportation de fiches en un clic</li>
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Synchronisation DataStore temps réel</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Streaming audio haute fidélité</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Contrôle DJ & Playlists personnalisées</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Infrastructure Discord 100% stable</li>
                 </ul>
             </div>
         </div>
@@ -424,8 +438,8 @@
 
     <section id="logs">
         <div class="section-header">
-            <h2 class="section-title">Supervision active</h2>
-            <p class="section-subtitle">Flux d'exécution du moteur Narval sur environnement de production</p>
+            <h2 class="section-title">Infrastructure unifiée</h2>
+            <p class="section-subtitle">Tout votre écosystème connecté en temps réel.</p>
         </div>
 
         <div class="terminal">
@@ -433,17 +447,14 @@
                 <div class="dot r"></div>
                 <div class="dot y"></div>
                 <div class="dot g"></div>
-                <span style="margin-left: 10px; font-size: 0.8rem; color: #71717a; font-family: monospace;">bash - narval_engine --watch</span>
+                <span style="margin-left: 10px; font-size: 0.8rem; color: #71717a; font-family: monospace;">bash - narval_hub --status</span>
             </div>
             <div class="terminal-body">
-                <span class="t-time">00:00:01</span> <span class="t-info">[SYS]</span> Initialisation du module de Gravité... <span class="t-white">OK</span><br>
-                <span class="t-time">00:00:02</span> <span class="t-info">[DATA]</span> Fusion Blacklist Statique & Dynamique... <span class="t-white">COMPLET</span><br>
-                <span class="t-time">00:04:12</span> <span class="t-warn">[DETECT]</span> Altération vecteur vitesse (Speed/Fly) identifiée.<br>
-                <span class="t-time">00:04:12</span> <span class="t-info">[ACTION]</span> Expulsion de la session. <span class="t-white">Gravité: 2</span>.<br>
-                <span class="t-time">00:15:33</span> <span class="t-crit">[CRIT]</span> Accès mémoire non autorisé (Injection Globals/HRP).<br>
-                <span class="t-time">00:15:33</span> <span class="t-info">[ACTION]</span> Bannissement réseau appliqué. Code: <span class="t-white">NRV-8A2B-F19C</span>. Gravité: 4.<br>
-                <span class="t-time">00:15:34</span> <span class="t-info">[API]</span> Transmission du rapport webhook Discord... <span class="t-white">200 OK</span><br>
-                <span class="t-time">00:15:35</span> <span class="t-info">[SYS]</span> En écoute d'événements CoreGui...
+                <span class="t-time">00:00:01</span> <span class="t-info">[AUTH]</span> Vérification de la licence globale... <span class="t-white">ACTIF</span><br>
+                <span class="t-time">00:00:02</span> <span class="t-info">[AC]</span> Déploiement de l'Anti-Cheat sur le jeu... <span class="t-white">OK</span><br>
+                <span class="t-time">00:00:04</span> <span class="t-info">[BOT]</span> Lancement du module Narval Music... <span class="t-white">EN ATTENTE (Soon)</span><br>
+                <span class="t-time">00:15:33</span> <span class="t-info">[AC]</span> Incident détecté (Gravité 4). Bannissement: <span class="t-white">NRV-8A2B-F19C</span>.<br>
+                <span class="t-time">00:15:34</span> <span class="t-info">[API]</span> Synchronisation des données vers le Panel Web... <span class="t-white">Succès</span><br>
             </div>
         </div>
     </section>
@@ -463,8 +474,10 @@
                     <div class="price-amount">5€<span>/mois</span></div>
                 </div>
                 <ul class="feature-list" style="margin-bottom: 2rem;">
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès à tous les outils</li>
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Support Discord</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès Narval Anti-Cheat</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès Narval Music (Bot)</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Tous nos futurs outils</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Support technique Discord</li>
                 </ul>
                 <a href="#" class="btn btn-outline btn-pricing">Sélectionner</a>
             </div>
@@ -476,8 +489,10 @@
                     <div class="price-amount">5€<span>/an</span></div>
                 </div>
                 <ul class="feature-list" style="margin-bottom: 2rem;">
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès à tous les outils</li>
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Support Discord</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès Narval Anti-Cheat</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès Narval Music (Bot)</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Tous nos futurs outils</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Support technique Discord</li>
                 </ul>
                 <a href="#" class="btn btn-outline btn-pricing">Sélectionner</a>
             </div>
@@ -489,8 +504,10 @@
                     <div class="price-amount">5€<span>/10 ans</span></div>
                 </div>
                 <ul class="feature-list" style="margin-bottom: 2rem;">
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès à tous les outils</li>
-                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Support Discord</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès Narval Anti-Cheat</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Accès Narval Music (Bot)</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Tous nos futurs outils</li>
+                    <li><svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg> Support technique Discord</li>
                 </ul>
                 <a href="#" class="btn btn-outline btn-pricing">Sélectionner</a>
             </div>
@@ -499,9 +516,9 @@
     </section>
 
     <footer>
-        <p>Narval Anti-Cheat &copy; 2024. Tous droits réservés.</p>
-        <p style="margin-top: 5px;">Logiciel de sécurité indépendant. Non affilié à Roblox Corporation.</p>
+        <p>Narval Suite &copy; 2024. Tous droits réservés.</p>
+        <p style="margin-top: 5px;">Logiciel indépendant. Non affilié à Roblox ou Discord.</p>
     </footer>
 
 </body>
-                                                                                                                                                </html>
+</html>
