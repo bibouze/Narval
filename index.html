@@ -199,4 +199,182 @@
         .tag-soon {
             position: absolute;
             bottom: 15px; right: 15px;
-            background: #f59e0
+            background: #f59e0b; color: #000;
+            padding: 5px 15px; border-radius: 20px;
+            font-weight: 800; font-size: 0.8rem; text-transform: uppercase;
+        }
+
+        .features-wrapper {
+            padding: 5rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8rem;
+        }
+
+        .feature-row {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-row:nth-child(even) { justify-content: flex-end; text-align: right; }
+
+        .feature-glass {
+            position: relative;
+            z-index: 1;
+            background: rgba(17, 24, 39, 0.75);
+            border: 1px solid var(--glass-border);
+            padding: 3.5rem;
+            border-radius: 20px;
+            max-width: 550px;
+            backdrop-filter: blur(25px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        .price-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 3rem 2rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        .price-value { font-size: 4rem; font-weight: 900; margin-bottom: 2rem; }
+        .price-value span { font-size: 1.2rem; color: var(--text-muted); }
+
+        .price-features { list-style: none; margin-bottom: 2rem; text-align: left; }
+        .price-features li { padding: 10px 0; border-bottom: 1px solid var(--glass-border); color: #d1d5db; }
+
+        .faq-section { padding: 5rem 5%; max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--glass-border); padding: 1.5rem 0; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: 700; cursor: pointer; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-muted); }
+        .faq-item.active .faq-answer { max-height: 200px; margin-top: 1rem; }
+
+        footer { text-align: center; padding: 3rem; border-top: 1px solid var(--glass-border); color: var(--text-muted); margin-top: 5rem; }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 3rem; }
+            .products-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="ambient-glow glow-1"></div>
+    <div class="ambient-glow glow-2"></div>
+
+    <nav>
+        <a href="#" class="logo">NARVAL V1</a>
+    </nav>
+
+    <header>
+        <div class="intro-text">Lancement de la version</div>
+        <h1>Narval <span>V1</span></h1>
+        <p class="hero-sub">L'intelligence artificielle au service de la sécurité de vos serveurs. Découvrez l'avenir de l'infrastructure communautaire.</p>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+            <a href="#pricing" class="btn">Rejoindre le futur</a>
+            <a href="#features" class="btn btn-outline">En savoir plus</a>
+        </div>
+    </header>
+
+    <h2 class="section-title-center">L'expérience <span style="color: var(--color-primary)">Narval V1</span></h2>
+
+    <section class="products-grid">
+        <div class="product-card">
+            <div class="product-banner banner-ac">
+                <div class="banner-text">AC V1</div>
+                <div class="tag-soon">Bientôt</div>
+            </div>
+            <h3>Narval Anti-Cheat</h3>
+            <p>Notre premier moteur d'exécution ultra-rapide. Sanctions graduées, webhooks détaillés et une protection robuste contre les exploits modernes.</p>
+            <a href="#pricing" class="btn" style="background: #1f2937; color: #9ca3af;">En attente</a>
+        </div>
+
+        <div class="product-card">
+            <div class="product-banner banner-music">
+                <div class="banner-text">MUSIC</div>
+                <div class="tag-soon">Bientôt</div>
+            </div>
+            <h3>Narval Music</h3>
+            <p>Le complément audio haute fidélité pour votre communauté Discord. Totalement intégré au système Narval V1.</p>
+            <a href="#pricing" class="btn" style="background: #1f2937; color: #9ca3af;">En attente</a>
+        </div>
+    </section>
+
+    <section class="features-wrapper" id="features">
+        <div class="feature-row">
+            <div class="feature-glass">
+                <h2>Interface V1 exclusive</h2>
+                <p>Narval V1 introduit une interface de gestion web nouvelle génération — élégante, intuitive, et différente de tout ce que le monde de la modération a pu voir jusqu'à présent.</p>
+            </div>
+        </div>
+
+        <div class="feature-row">
+            <div class="feature-glass">
+                <h2>Moteur de Menaces Alpha</h2>
+                <p>Une technologie intégrée à la V1 aide à identifier et neutraliser les menaces de manière algorithmique avant qu'elles n'impactent vos joueurs.</p>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="section-title-center" style="margin-top: 5rem;">Tarification <span style="color: var(--color-secondary)">Narval V1</span></h2>
+    <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: -2rem auto 3rem;">Un prix unique pour un accès total à toute la première version.</p>
+
+    <section class="pricing-section" id="pricing">
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Accès V1</h3>
+                <div class="price-value">5€<span>/unique</span></div>
+                <ul class="price-features">
+                    <li>Accès à Narval Anti-Cheat V1</li>
+                    <li>Accès à Narval Music</li>
+                    <li>Panel Web nouvelle génération</li>
+                    <li>Support Discord Prioritaire</li>
+                </ul>
+                <a href="https://discord.gg/B3zTkkgu" class="btn btn-outline" style="width: 100%;">Sélectionner</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="section-title-center" style="margin-bottom: 2rem; font-size: 2rem;">Questions Fréquentes</h2>
+        <div class="faq-item">
+            <div class="faq-question">Qu'est-ce que Narval V1 ? <span>+</span></div>
+            <div class="faq-answer">Narval V1 est la première version stable de notre suite d'outils pour serveurs, incluant un anti-cheat performant et un bot de musique haute qualité.</div>
+        </div>
+        <div class="faq-item">
+            <div class="faq-question">Pourquoi ce prix ? <span>+</span></div>
+            <div class="faq-answer">Nous croyons en un accès simple. 5 euros vous permettent de profiter de toute l'infrastructure Narval V1 sans frais cachés.</div>
+        </div>
+    </section>
+
+    <footer>
+        <p>Narval V1 &copy; 2024. Tous droits réservés.</p>
+        <p style="margin-top: 5px;">Développé pour la performance. Non affilié à Roblox Corporation.</p>
+    </footer>
+
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
