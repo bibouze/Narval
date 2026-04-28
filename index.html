@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Narval Music | Ajouter le bot</title>
+    <title>Narval Suite | L'avenir de l'infrastructure</title>
     <style>
         :root {
             --bg-dark: #030712;
@@ -29,9 +29,6 @@
             color: var(--text-main);
             overflow-x: hidden;
             line-height: 1.6;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
         .ambient-glow {
@@ -82,16 +79,22 @@
             letter-spacing: -0.5px;
         }
 
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: #fff;
+        }
+
         h1, h2, h3 { font-weight: 800; letter-spacing: -1px; }
 
         .btn {
             background: var(--gradient-btn);
             color: #fff;
-            padding: 15px 35px;
+            padding: 12px 28px;
             border: none;
             border-radius: 30px;
             font-weight: 700;
-            font-size: 1.1rem;
+            font-size: 1rem;
             cursor: pointer;
             text-decoration: none;
             text-transform: uppercase;
@@ -117,12 +120,11 @@
         }
 
         header {
-            padding: 12rem 5% 5rem;
+            padding: 15rem 5% 8rem;
             text-align: center;
             display: flex;
             flex-direction: column;
             align-items: center;
-            flex-grow: 1;
         }
 
         .intro-text {
@@ -152,83 +154,193 @@
             font-size: 1.2rem;
             color: var(--text-muted);
             max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-
-        /* NOUVEAU STYLE POUR LE WARNING */
-        .warning-banner {
-            background: rgba(245, 158, 11, 0.1);
-            border: 1px solid rgba(245, 158, 11, 0.3);
-            color: #fbbf24;
-            padding: 12px 25px;
-            border-radius: 50px;
-            font-size: 0.95rem;
             margin: 0 auto 3rem;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.1);
-            max-width: 90%;
-            text-align: left;
         }
 
-        .warning-banner strong {
-            color: #fcd34d;
+        .section-title-center {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
         }
 
-        .simple-features {
+        .products-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 2rem;
-            padding: 2rem 5% 6rem;
+            padding: 0 5% 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover { transform: scale(1.02); }
+
+        .product-banner {
+            height: 200px;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .banner-ac { background: radial-gradient(circle at center, #1e3a8a 0%, #0f172a 100%); }
+        .banner-music { background: radial-gradient(circle at center, #064e3b 0%, #022c22 100%); }
+
+        .banner-text {
+            font-size: 4rem;
+            font-weight: 900;
+            background: linear-gradient(to right, #60a5fa, #34d399);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            opacity: 0.8;
+        }
+
+        .product-card h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .product-card p { color: var(--text-muted); margin-bottom: 20px; font-size: 1rem; }
+
+        .tag-popular {
+            position: absolute;
+            bottom: 15px; right: 15px;
+            background: #fff; color: #000;
+            padding: 5px 15px; border-radius: 20px;
+            font-weight: 800; font-size: 0.8rem; text-transform: uppercase;
+        }
+
+        .features-wrapper {
+            padding: 5rem 5%;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 8rem;
+        }
+
+        .feature-row {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .feature-row:nth-child(even) { justify-content: flex-end; text-align: right; }
+
+        @keyframes auraBreath {
+            0% { transform: scale(1); opacity: 0.4; }
+            50% { transform: scale(1.3); opacity: 0.7; }
+            100% { transform: scale(1); opacity: 0.4; }
+        }
+
+        .feature-glow-box {
+            position: absolute;
+            width: 350px; height: 350px;
+            background: var(--color-secondary);
+            filter: blur(90px);
+            border-radius: 50%;
+            z-index: 0;
+            animation: auraBreath 6s ease-in-out infinite;
+        }
+
+        .feature-row:nth-child(1) .feature-glow-box { left: 0; }
+        .feature-row:nth-child(2) .feature-glow-box { right: 0; background: var(--color-primary); animation-delay: -3s; }
+
+        @keyframes floatCard {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .feature-glass {
+            position: relative;
+            z-index: 1;
+            background: rgba(17, 24, 39, 0.75);
+            border: 1px solid var(--glass-border);
+            padding: 3.5rem;
+            border-radius: 20px;
+            max-width: 550px;
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            animation: floatCard 7s ease-in-out infinite;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+
+        .feature-row:nth-child(2) .feature-glass {
+            animation-delay: -3.5s;
+        }
+
+        .feature-glass h2 { font-size: 2.2rem; margin-bottom: 1rem; color: #fff; }
+        .feature-glass p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.8; }
+
+        @media (max-width: 768px) {
+            .feature-row {
+                justify-content: center !important;
+                text-align: left !important;
+                margin-bottom: 2rem;
+            }
+            .feature-glow-box {
+                width: 100%; height: 100%;
+                top: 0; left: 0 !important; right: 0 !important;
+                border-radius: 20px;
+            }
+            .feature-glass {
+                padding: 2rem;
+                width: 100%;
+            }
+        }
+
+        .pricing-section { padding: 5rem 5%; }
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
             max-width: 1100px;
             margin: 0 auto;
         }
 
-        .feature-box {
+        .price-card {
             background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            padding: 2.5rem 2rem;
+            padding: 3rem 2rem;
             border-radius: 20px;
             text-align: center;
             backdrop-filter: blur(10px);
-            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
         }
 
-        .feature-box:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 229, 255, 0.4);
-        }
+        .price-card h3 { font-size: 1.5rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 1rem;}
+        .price-value { font-size: 4rem; font-weight: 900; line-height: 1; margin-bottom: 2rem; }
+        .price-value span { font-size: 1.2rem; color: var(--text-muted); }
 
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
+        .price-features { list-style: none; margin-bottom: 2rem; text-align: left; }
+        .price-features li { padding: 10px 0; border-bottom: 1px solid var(--glass-border); color: #d1d5db; font-size: 0.95rem; }
+        .price-features li:last-child { border: none; }
 
-        .feature-box h3 {
-            font-size: 1.3rem;
-            color: #fff;
-            margin-bottom: 10px;
-        }
+        .btn-full { width: 100%; margin-top: auto; }
 
-        .feature-box p {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
+        .faq-section { padding: 5rem 5%; max-width: 800px; margin: 0 auto; }
+        .faq-item { border-bottom: 1px solid var(--glass-border); padding: 1.5rem 0; }
+        .faq-question { display: flex; justify-content: space-between; align-items: center; font-size: 1.2rem; font-weight: 700; cursor: pointer; color: #fff; }
+        .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; color: var(--text-muted); margin-top: 0; }
+        .faq-item.active .faq-answer { max-height: 200px; margin-top: 1rem; }
+        .plus-icon { font-size: 1.5rem; transition: transform 0.3s; }
+        .faq-item.active .plus-icon { transform: rotate(45deg); }
 
-        footer { 
-            text-align: center; 
-            padding: 3rem; 
-            border-top: 1px solid var(--glass-border); 
-            color: var(--text-muted); 
-            margin-top: auto; 
-        }
+        footer { text-align: center; padding: 3rem; border-top: 1px solid var(--glass-border); color: var(--text-muted); margin-top: 5rem; }
 
         @media (max-width: 768px) {
-            header h1 { font-size: 3.5rem; }
-            .btn { padding: 12px 25px; font-size: 1rem; }
-            .warning-banner { flex-direction: column; text-align: center; border-radius: 20px; }
+            header h1 { font-size: 3rem; }
+            .products-grid, .pricing-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -238,55 +350,145 @@
     <div class="ambient-glow glow-2"></div>
 
     <nav>
-        <a href="#" class="logo">NARVAL SUITE</a>
+        <a href="#" class="logo">NARVAL</a>
+        <div class="hamburger">
+            <svg width="30" height="30" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </div>
     </nav>
 
     <header>
-        <div class="intro-text">Le module audio par excellence</div>
-        <h1>Narval <span>Music</span></h1>
-        <p class="hero-sub">Ajoutez une qualité sonore sans compromis à votre serveur. Fluidité parfaite, contrôle intuitif, 100% intégré à l'écosystème Narval.</p>
-        
-        <!-- MESSAGE D'AVERTISSEMENT -->
-        <div class="warning-banner">
-            <span style="font-size: 1.2rem;">⚠️</span>
-            <span><strong>En développement :</strong> Vous pouvez inviter Narval Music dès maintenant, mais le bot n'est pas encore prêt à 100%.</span>
-        </div>
-        
-        <div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
-            <a href="https://discord.com/oauth2/authorize?client_id=1457179396002545790&permissions=3147776&integration_type=0&scope=bot" target="_blank" rel="noopener noreferrer" class="btn">
-                Ajouter à Discord
-            </a>
-            
-            <a href="https://discord.gg/V9xtvkCCc" target="_blank" rel="noopener noreferrer" class="btn btn-outline">
-                Serveur Support
-            </a>
+        <div class="intro-text">Introducing</div>
+        <h1>Narval <span>Suite</span></h1>
+        <p class="hero-sub">L'intelligence artificielle au service de la sécurité de vos serveurs. Découvrez l'avenir de l'infrastructure communautaire.</p>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center;">
+            <a href="#pricing" class="btn">Rejoindre le futur</a>
+            <a href="#features" class="btn btn-outline">En savoir plus</a>
         </div>
     </header>
 
-    <section class="simple-features">
-        <div class="feature-box">
-            <div class="feature-icon">🎧</div>
-            <h3>Audio Haute Fidélité</h3>
-            <p>Une restitution sonore parfaite, sans grésillement ni perte de qualité pour vos salons vocaux.</p>
+    <h2 class="section-title-center">Choose Your <span style="color: var(--color-primary)">Experience</span></h2>
+
+    <section class="products-grid">
+        <div class="product-card">
+            <div class="product-banner banner-ac">
+                <div class="banner-text">AC V1</div>
+                <div class="tag-popular" style="background: #f59e0b; color: #000;">Soon</div>
+            </div>
+            <h3>Narval Anti-Cheat</h3>
+            <p>Le moteur d'exécution le plus rapide. Sanctions de gravité 1 à 5, webhooks détaillés, Panel Web avancé et zéro faux positif sur les exploits. Bientôt disponible.</p>
+            <a href="#pricing" class="btn" style="background: #1f2937; color: #9ca3af; box-shadow: none;">Bientôt disponible</a>
         </div>
 
-        <div class="feature-box">
-            <div class="feature-icon">⚡</div>
-            <h3>Latence Zéro</h3>
-            <p>Hébergé sur notre infrastructure premium pour garantir un uptime constant et une fluidité absolue.</p>
+        <div class="product-card">
+            <div class="product-banner banner-music">
+                <div class="banner-text">MUSIC</div>
+                <div class="tag-popular" style="background: var(--color-primary); color: #000;">Nouveau</div>
+            </div>
+            <h3>Narval Music</h3>
+            <p>Un bot Discord haute définition. Contrôle DJ absolu, système de file d'attente fluide et intégration totale à l'écosystème Narval. Disponible dès maintenant.</p>
+            <!-- LE LIEN VERS TA PAGE GITHUB EST ICI -->
+            <a href="https://bibouze.github.io/Narval-music/" target="_blank" class="btn">Découvrir le bot</a>
+        </div>
+    </section>
+
+    <section class="features-wrapper" id="features">
+        <div class="feature-row">
+            <div class="feature-glow-box"></div>
+            <div class="feature-glass">
+                <h2>Unseen Web Experience</h2>
+                <p>Narval introduit une interface de gestion web nouvelle génération — élégante, intuitive, et différente de tout ce que le monde de la modération a pu voir jusqu'à présent.</p>
+            </div>
         </div>
 
-        <div class="feature-box">
-            <div class="feature-icon">🎛️</div>
-            <h3>Contrôle Total</h3>
-            <p>File d'attente intuitive, système de skip, et commandes slash (/) rapides pour gérer votre musique.</p>
+        <div class="feature-row">
+            <div class="feature-glow-box"></div>
+            <div class="feature-glass">
+                <h2>Advanced Threat Engine</h2>
+                <p>Une technologie intégrée aide à identifier, classer (Gravité de 1 à 5) et neutraliser les menaces de manière algorithmique avant qu'elles n'impactent l'expérience de vos joueurs honnêtes.</p>
+            </div>
+        </div>
+    </section>
+
+    <h2 class="section-title-center" style="margin-top: 5rem;">Tarification <span style="color: var(--color-secondary)">Unique</span></h2>
+    <p style="text-align: center; color: var(--text-muted); max-width: 600px; margin: -2rem auto 3rem;">Le même prix pour tous. Peu importe la durée d'utilisation choisie.</p>
+
+    <section class="pricing-section" id="pricing">
+        <div class="pricing-grid">
+            <div class="price-card">
+                <h3>Mensuel</h3>
+                <div class="price-value">5€<span>/mo</span></div>
+                <ul class="price-features">
+                    <li>Accès à Narval Anti-Cheat</li>
+                    <li>Accès à Narval Music (Bot)</li>
+                    <li>Accès à tous nos futurs outils</li>
+                    <li>Support Discord Premium</li>
+                </ul>
+                <!-- LE NOUVEAU LIEN DISCORD EST ICI -->
+                <a href="https://discord.gg/V9xtvkCCc" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-full">Sélectionner</a>
+            </div>
+
+            <div class="price-card">
+                <h3>Annuel</h3>
+                <div class="price-value">5€<span>/mo</span></div>
+                <ul class="price-features">
+                    <li>Accès à Narval Anti-Cheat</li>
+                    <li>Accès à Narval Music (Bot)</li>
+                    <li>Accès à tous nos futurs outils</li>
+                    <li>Support Discord Premium</li>
+                </ul>
+                <!-- LE NOUVEAU LIEN DISCORD EST ICI -->
+                <a href="https://discord.gg/V9xtvkCCc" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-full">Sélectionner</a>
+            </div>
+
+            <div class="price-card">
+                <h3>Décennie</h3>
+                <div class="price-value">5€<span>/mo</span></div>
+                <ul class="price-features">
+                    <li>Accès à Narval Anti-Cheat</li>
+                    <li>Accès à Narval Music (Bot)</li>
+                    <li>Accès à tous nos futurs outils</li>
+                    <li>Support Discord Premium</li>
+                </ul>
+                <!-- LE NOUVEAU LIEN DISCORD EST ICI -->
+                <a href="https://discord.gg/V9xtvkCCc" target="_blank" rel="noopener noreferrer" class="btn btn-outline btn-full">Sélectionner</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="faq-section">
+        <h2 class="section-title-center" style="margin-bottom: 2rem; font-size: 2rem;">Frequently Asked Questions</h2>
+        
+        <div class="faq-item">
+            <div class="faq-question">Qu'est-ce qui est inclus dans les 5€ ? <span class="plus-icon">+</span></div>
+            <div class="faq-answer">Absolument tout. L'abonnement vous donne accès à Narval Anti-Cheat, au futur bot Narval Music, ainsi qu'à l'intégralité des outils que nous développerons à l'avenir.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Y a-t-il des faux positifs avec l'Anti-Cheat ? <span class="plus-icon">+</span></div>
+            <div class="faq-answer">Non. Notre système de gravité (Niveau 1 à 5) permet de filtrer intelligemment les comportements. Les sanctions lourdes (Niveau 4 et 5) ne se déclenchent que sur des manipulations certaines du client.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">Pourquoi tous les abonnements coûtent 5€ par mois ? <span class="plus-icon">+</span></div>
+            <div class="faq-answer">C'est notre philosophie. Nous ne voulons pas compliquer les choses avec des tarifs variables. L'accès à toute notre infrastructure coûte 5€ par mois, peu importe si vous prévoyez d'utiliser nos services pour un mois ou pour dix ans.</div>
         </div>
     </section>
 
     <footer>
-        <p>Narval Music &copy; 2024. Fait partie de Narval Suite.</p>
-        <p style="margin-top: 10px; font-size: 0.8rem; opacity: 0.5;">Propulsé par la technologie Narval</p>
+        <p>Narval Suite &copy; 2024. All rights reserved.</p>
+        <p style="margin-top: 5px;">Built for performance. Not affiliated with Roblox Corporation.</p>
+        <p style="margin-top: 15px; font-size: 0.7rem; opacity: 0.5;">by bibouze</p>
     </footer>
 
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) item.classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
